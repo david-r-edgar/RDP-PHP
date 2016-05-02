@@ -8,10 +8,10 @@ License: Public Domain
     include "src/rdp.php";
 
     $line = array(
-        0 => array("E"=> 150,"N" => 10),
-        1 => array("E" => 200,"N" => 100),
-        2 => array("E" => 360,"N" => 170),
-        3 => array("E" => 500,"N" => 280));
+        array(150, 10),
+        array(200, 100),
+        array(360, 170),
+        array(500, 280));
 
     //try calling RamerDouglasPeucker() with different values of $epsilon - eg. 10 or 50
     $rdpResult = RamerDouglasPeucker($line, 30);

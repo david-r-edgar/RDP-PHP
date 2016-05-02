@@ -1,10 +1,14 @@
 <?php
+namespace davidredgar\polyline;
+
 //The author has placed this work in the Public Domain, thereby relinquishing
 //all copyrights.
 //You may use, modify, republish, sell or give away this work without prior
 //consent.
 //This implementation comes with no warranty or guarantee of fitness for any
 //purpose.
+
+require_once __DIR__ .'/../vendor/autoload.php';
 
 //=============================================================================
 //An implementation of the Ramer-Douglas-Peucker algorithm for reducing
@@ -73,7 +77,7 @@ class RDP
         // If max distance is greater than epsilon, recursively simplify
         if ($dmax >= $epsilon)
         {
-            // Recursive call
+            // Recursive call on each 'half' of the polyline
             $recResults1 = self::RamerDouglasPeucker2d(
                        array_slice($pointList, 0, $index + 1),
                                 $epsilon);

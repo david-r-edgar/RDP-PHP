@@ -2,6 +2,8 @@
 
     include "../src/rdp.php";
 
+    use davidredgar\polyline\RDP;
+
     $line = array(
         array(150, 10),
         array(200, 100),
