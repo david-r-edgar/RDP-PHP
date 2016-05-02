@@ -1,6 +1,6 @@
 <?php
 
-    include "../src/rdp.php";
+    require __DIR__ . '/vendor/autoload.php';
 
     use davidredgar\polyline\RDP;
 

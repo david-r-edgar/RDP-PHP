@@ -3,9 +3,11 @@ PHP implementation of the [Ramer–Douglas–Peucker](http://en.wikipedia.org/wi
 
 License: Public Domain
 
-### Example usage ###
+### Installation ###
 
-    include "src/rdp.php";
+    composer require david-r-edgar/rdp
+
+### Example usage ###
 
     use davidredgar\polyline\RDP;
 
