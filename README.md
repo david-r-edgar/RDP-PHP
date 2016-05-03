@@ -17,9 +17,16 @@ License: Public Domain
         array(360, 170),
         array(500, 280));
 
-    //try calling RamerDouglasPeucker() with different values of $epsilon - eg. 10 or 50
     $rdpResult = RDP::RamerDouglasPeucker2d($line, 30);
-    var_dump ($rdpResult);
+
+`$rdpResult` will contain a resulting array with the reduced number of points. For this example:
+
+    $rdpResult == array(
+        array(150, 10),
+        array(200, 100),
+        array(500, 280));
+
+The second parameter to `RamerDouglasPeucker2d()` is epsilon, the maximum perpendicular distance for any point from the line between two adjacent points. Try replacing it with, say, 10 or 50 and observe the results.
 
 ### Use for geographic purposes ###
 
