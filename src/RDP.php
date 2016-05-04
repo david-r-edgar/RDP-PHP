@@ -16,6 +16,8 @@ require_once __DIR__ .'/../vendor/autoload.php';
 //http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm
 //=============================================================================
 
+class InvalidParameterException extends \Exception { }
+
 class RDP
 {
     //Finds the perpendicular distance from a point to a straight line.
@@ -53,6 +55,16 @@ class RDP
     //Each point returned in the result array will retain all its original data.
     public static function RamerDouglasPeucker2d($pointList, $epsilon)
     {
+        if ($epsilon <= 0)
+        {
+            throw new InvalidParameterException('Non-positive epsilon.');
+        }
+
+        if (count($pointList) < 2)
+        {
+            return $pointList;
+        }
+
         // Find the point with the maximum distance
         $dmax = 0;
         $index = 0;

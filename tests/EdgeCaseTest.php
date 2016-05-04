@@ -67,29 +67,43 @@ class EdgeCaseTests extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expectedResult, $rdpResult, "result polyline array incorrect");
     }
-/*
+
     public function testEpsilon0()
     {
         $line = array(array(3400, 89000), array(5500, 52000), array(4800, 41000));
 
-        $rdpResult = RDP::RamerDouglasPeucker2d($line, 0);
+        $invalidParameterExceptionsCaught = 0;
 
-        $expectedResult = array(array(3400, 89000), array(4800, 41000));
+        try
+        {
+            $rdpResult = RDP::RamerDouglasPeucker2d($line, 0);
+        }
+        catch (InvalidParameterException $e)
+        {
+            $invalidParameterExceptionsCaught ++;
+        }
 
-        $this->assertEquals($expectedResult, $rdpResult, "result polyline array incorrect");
+        $this->assertEquals(1, $invalidParameterExceptionsCaught, "expected exception not thrown");
     }
 
     public function testNegativeEpsilon()
     {
         $line = array(array(125.6, 89.5), array(97.4, 101.0), array(70.8, 109.1));
 
-        $rdpResult = RDP::RamerDouglasPeucker2d($line, -20);
+        $invalidParameterExceptionsCaught = 0;
 
-        $expectedResult = array(array(125.6, 89.5), array(97.4, 101.0), array(70.8, 109.1));
+        try
+        {
+            $rdpResult = RDP::RamerDouglasPeucker2d($line, -20);
+        }
+        catch (InvalidParameterException $e)
+        {
+            $invalidParameterExceptionsCaught ++;
+        }
 
-        $this->assertEquals($expectedResult, $rdpResult, "result polyline array incorrect");
+        $this->assertEquals(1, $invalidParameterExceptionsCaught, "expected exception not thrown");
     }
-*/
+
     public function testHorizontalLine()
     {
         $line = array(array(10, 10), array(20, 10), array(30, 10), array(40, 10));
