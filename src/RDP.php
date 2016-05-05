@@ -21,7 +21,9 @@ class InvalidParameterException extends \Exception { }
 class RDP
 {
     //Finds the perpendicular distance from a point to a straight line.
+    //
     //The coordinates of the point are specified as $ptX and $ptY.
+    //
     //The line passes through points l1 and l2, specified respectively with
     //their coordinates $l1x and $l1y, and $l2x and $l2y
     protected static function perpendicularDistance2d($ptX, $ptY,
@@ -44,13 +46,16 @@ class RDP
         return $result;
     }
 
-    //RamerDouglasPeucker
+    //RamerDouglasPeucker2d
+    //
     //Reduces the number of points on a polyline by removing those that are
     //closer to the line than the distance $epsilon.
+    //
     //The polyline is provided as an array of arrays, where each internal array
     //is one point on the polyline, specified by two numeric coordinates.
     //It is assumed that the coordinates and distance $epsilon are given in the
     //same units.
+    //
     //The result is returned as an array in a similar format.
     //Each point returned in the result array will retain all its original data.
     public static function RamerDouglasPeucker2d($pointList, $epsilon)
