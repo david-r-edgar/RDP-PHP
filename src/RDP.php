@@ -46,6 +46,17 @@ class RDP
         return $result;
     }
 
+
+    protected static function perpendicularDistance3d($ptX, $ptY, $ptZ
+                                                      $l1x, $l1y, $l1z
+                                                      $l2x, $l2y, $l2z)
+    {
+        $result = -1;
+
+        return $result;
+    }
+
+
     //RamerDouglasPeucker2d
     //
     //Reduces the number of points on a polyline by removing those that are
@@ -115,5 +126,34 @@ class RDP
         // Return the result
         return $resultList;
     }
+
+
+    //RamerDouglasPeucker3d
+    //
+    //Reduces the number of points on a three dimensional polyline by removing
+    //those that are closer to the line than the distance $epsilon.
+    //
+    //The polyline is provided as an array of arrays, where each internal array
+    //is one point on the polyline, specified by three numeric coordinates.
+    //It is assumed that the coordinates and distance $epsilon are given in the
+    //same units.
+    //
+    //The result is returned as an array in a similar format.
+    //Each point returned in the result array will retain all its original data.
+    public static function RamerDouglasPeucker3d($pointList, $epsilon)
+    {
+        if ($epsilon <= 0)
+        {
+            throw new InvalidParameterException('Non-positive epsilon.');
+        }
+
+        if (count($pointList) < 2)
+        {
+            return $pointList;
+        }
+
+        return null;
+    }
+
 }
 ?>
