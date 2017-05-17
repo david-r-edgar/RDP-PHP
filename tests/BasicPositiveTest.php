@@ -1,7 +1,7 @@
 <?php
 namespace davidredgar\polyline;
 
-class BasicPositiveTests extends \PHPUnit_Framework_TestCase
+class BasicPositiveTests extends \PHPUnit\Framework\TestCase
 {
     public function testBasic1()
     {

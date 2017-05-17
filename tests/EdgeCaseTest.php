@@ -1,7 +1,7 @@
 <?php
 namespace davidredgar\polyline;
 
-class EdgeCaseTests extends \PHPUnit_Framework_TestCase
+class EdgeCaseTests extends \PHPUnit\Framework\TestCase
 {
     public function testNoPointsInLine()
     {
