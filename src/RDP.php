@@ -1,31 +1,46 @@
 <?php
 namespace davidredgar\polyline;
 
-//The author has placed this work in the Public Domain, thereby relinquishing
-//all copyrights.
-//You may use, modify, republish, sell or give away this work without prior
-//consent.
-//This implementation comes with no warranty or guarantee of fitness for any
-//purpose.
+/**
+ * An implementation of the Ramer-Douglas-Peucker algorithm for reducing
+ * the number of points on a polyline.
+ *
+ * For more information, see:
+ * http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm
+ *
+ * @author David Edgar
+ *
+ * @license PD The author has placed this work in the Public Domain, thereby
+ * relinquishing all copyrights.
+ * You may use, modify, republish, sell or give away this work without prior
+ * consent.
+ * This implementation comes with no warranty or guarantee of fitness for any
+ * purpose.
+ */
 
 require_once __DIR__ .'/../vendor/autoload.php';
-
-//=============================================================================
-//An implementation of the Ramer-Douglas-Peucker algorithm for reducing
-//the number of points on a polyline - see:
-//http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm
-//=============================================================================
 
 class InvalidParameterException extends \Exception { }
 
 class RDP
 {
-    //Finds the perpendicular distance from a point to a straight line.
-    //
-    //The coordinates of the point are specified as $ptX and $ptY.
-    //
-    //The line passes through points l1 and l2, specified respectively with
-    //their coordinates $l1x and $l1y, and $l2x and $l2y
+    /**
+     * Finds the perpendicular distance from a point to a straight line.
+     *
+     * The coordinates of the point are specified as $ptX and $ptY.
+     *
+     * The line passes through points l1 and l2, specified respectively with
+     * their coordinates $l1x and $l1y, and $l2x and $l2y
+     *
+     * @param float $ptX X coordinate of the point
+     * @param float $ptY Y coordinate of the point
+     * @param float $l1x X coordinate of point on the line l1
+     * @param float $l1y Y coordinate of point on the line l1
+     * @param float $l2x X coordinate of point on the line l2
+     * @param float $l2y Y coordinate of point on the line l2
+     *
+     * @return float The distance from the point to the line.
+     */
     protected static function perpendicularDistance2d($ptX, $ptY,
                                                       $l1x, $l1y, $l2x, $l2y)
     {
@@ -46,7 +61,6 @@ class RDP
         return $result;
     }
 
-
     protected static function perpendicularDistance3d($ptX, $ptY, $ptZ
                                                       $l1x, $l1y, $l1z
                                                       $l2x, $l2y, $l2z)
@@ -57,18 +71,22 @@ class RDP
     }
 
 
-    //RamerDouglasPeucker2d
-    //
-    //Reduces the number of points on a polyline by removing those that are
-    //closer to the line than the distance $epsilon.
-    //
-    //The polyline is provided as an array of arrays, where each internal array
-    //is one point on the polyline, specified by two numeric coordinates.
-    //It is assumed that the coordinates and distance $epsilon are given in the
-    //same units.
-    //
-    //The result is returned as an array in a similar format.
-    //Each point returned in the result array will retain all its original data.
+
+    /**
+     * RamerDouglasPeucker2d
+     *
+     * Reduces the number of points on a polyline by removing those that are
+     * closer to the line than the distance $epsilon.
+     *
+     * @param array $pointList An array of arrays, where each internal array
+     * is one point on the polyline, specified by two numeric coordinates.
+     * @param float $epsilon The distance threshold to use. The unit should be
+     * the same as that of the coordinates of the points in $pointList.
+     *
+     * @return array $pointList An array of arrays, with the same format as the
+     * original argument $pointList. Each point returned in the result array will
+     * retain all its original data.
+     */
     public static function RamerDouglasPeucker2d($pointList, $epsilon)
     {
         if ($epsilon <= 0)

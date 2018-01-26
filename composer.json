@@ -4,7 +4,7 @@
     "description": "Ramer–Douglas–Peucker algorithm for polyline simplification",
     "keywords": ["Ramer-Douglas-Peucker","polyline","geo","Ramer","Douglas","Peucker"],
     "homepage": "https://github.com/david-r-edgar/RDP-PHP",
-    "license": "Public Domain",
+    "license": "Unlicense",
     "authors":
     [
         {
